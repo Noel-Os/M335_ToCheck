@@ -2,9 +2,11 @@ package com.example.tocheck.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         instance = this;
         list = (ListView) findViewById(R.id.list);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ShowActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public Activity getActivity(){
+        return this;
     }
 
     public void toCreateActivity(View view){
