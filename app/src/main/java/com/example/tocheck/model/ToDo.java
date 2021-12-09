@@ -23,4 +23,16 @@ public class ToDo {
         return this.title;
     }
 
+    public Date getDate(){
+        return this.date;
+    }
+
+    public Bitmap getImg(){
+        return this.img;
+    }
+
+    public boolean getDone(){
+        return this.done;
+    }
+
 }
