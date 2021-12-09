@@ -23,6 +23,7 @@ public class CreateActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView preview;
     TextView tw;
+    TextView titleInput;
     Date date;
     Bitmap img;
 
@@ -31,6 +32,7 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         tw = (TextView) findViewById(R.id.tw);
+        titleInput = (TextView) findViewById(R.id.titleInput);
     }
 
     public void takePhoto(View view){
@@ -63,7 +65,8 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void createToDo(View view){
-        ToDo toDo = new ToDo((String) tw.getText(), date, img);
+        String t = titleInput.getText().toString();
+        ToDo toDo = new ToDo(t, date, img);
         MainActivity.getInstance().toDoList.add(toDo);
         this.finish();
     }

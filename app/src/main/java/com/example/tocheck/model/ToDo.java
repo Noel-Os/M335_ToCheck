@@ -12,11 +12,15 @@ public class ToDo {
     private Bitmap img;
     private boolean done;
 
-    public ToDo(String title, Date date, Bitmap img){
+    public  ToDo(String title, Date date, Bitmap img){
         this.title = title;
         this.date = date;
         this.img = img;
         this.done = false;
+    }
+
+    public String getTitle(){
+        return this.title;
     }
 
 }
