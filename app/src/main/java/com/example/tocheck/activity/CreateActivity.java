@@ -1,16 +1,20 @@
-package com.example.tocheck;
+package com.example.tocheck.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.tocheck.R;
+import com.example.tocheck.model.ToDo;
 
 import java.util.Date;
 
@@ -20,6 +24,7 @@ public class CreateActivity extends AppCompatActivity {
     ImageView preview;
     TextView tw;
     Date date;
+    Bitmap img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class CreateActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             preview.setImageBitmap(imageBitmap);
+            this.img = imageBitmap;
         }
     }
 
@@ -57,6 +63,8 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void createToDo(View view){
-
+        ToDo toDo = new ToDo((String) tw.getText(), date, img);
+        MainActivity.getInstance().toDoList.add(toDo);
+        this.finish();
     }
 }
