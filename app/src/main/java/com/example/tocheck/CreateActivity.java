@@ -2,18 +2,14 @@ package com.example.tocheck;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ActivityNotFoundException;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.ImageView;
-
-import java.io.File;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -41,4 +37,15 @@ public class CreateActivity extends AppCompatActivity {
             preview.setImageBitmap(imageBitmap);
         }
     }
+
+    public void openDatePicker(View view){
+        DatePickerDialog dpd = new DatePickerDialog (this);
+
+        dpd.show();
+    }
+
+    public void setNewDate(){
+
+    }
+
 }
