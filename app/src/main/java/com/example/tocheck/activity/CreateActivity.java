@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.tocheck.R;
 import com.example.tocheck.model.ToDo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CreateActivity extends AppCompatActivity {
@@ -57,7 +58,8 @@ public class CreateActivity extends AppCompatActivity {
         dpd.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                tw.setText(Integer.toString(dayOfMonth) + "." + Integer.toString(month) + "." + Integer.toString(year));
+                String dateString = Integer.toString(dayOfMonth) + "." + Integer.toString(month) + "." + Integer.toString(year);
+                tw.setText(dateString);
                 date = new Date(year, month, dayOfMonth);
             }
         });

@@ -22,5 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/todo_image"
+            android:layout_width="match_parent"
+            android:layout_height="393dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkToDo"
+            android:text="Done" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
