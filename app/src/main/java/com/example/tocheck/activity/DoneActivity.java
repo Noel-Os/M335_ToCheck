@@ -17,26 +17,34 @@ import java.util.ArrayList;
 
 public class DoneActivity extends AppCompatActivity {
 
+    private static DoneActivity instance;
+
+    ArrayList<ToDo> allToDos = new ArrayList<>();
     ArrayList<ToDo> toDos = new ArrayList<>();
     ArrayList<String> toDosS = new ArrayList<>();
     ListView checked_list;
+
+    public static DoneActivity getInstance(){
+        return instance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_done);
         checked_list = findViewById(R.id.checked_list);
-
+        instance = this;
         checked_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ShowActivity.class);
                 intent.putExtra("id", id);
+                intent.putExtra("from", "done");
                 startActivity(intent);
             }
         });
 
-        this.toDos = MainActivity.getInstance().allToDos;
+        this.allToDos = MainActivity.getInstance().allToDos;
     }
 
     public Activity getActivity(){
@@ -56,8 +64,8 @@ public class DoneActivity extends AppCompatActivity {
         ArrayList<ToDo> save = new ArrayList<>();
         save.addAll(toDos);
         toDos.clear();
-        if (save.size() != 0) {
-            for (ToDo toDo:save){
+        if (allToDos.size() != 0) {
+            for (ToDo toDo:allToDos){
                 if (toDo.getDone()){
                     toDos.add(toDo);
                 }

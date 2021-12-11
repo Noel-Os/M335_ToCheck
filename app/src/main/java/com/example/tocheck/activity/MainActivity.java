@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ShowActivity.class);
                 intent.putExtra("id", id);
+                intent.putExtra("from", "main");
                 startActivity(intent);
             }
         });

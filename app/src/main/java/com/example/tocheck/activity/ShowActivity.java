@@ -13,6 +13,7 @@ import com.example.tocheck.R;
 import com.example.tocheck.model.ToDo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ShowActivity extends AppCompatActivity {
@@ -36,10 +37,20 @@ public class ShowActivity extends AppCompatActivity {
         super.onStart();
         Intent intent = getIntent();
         long id = intent.getLongExtra("id", 0);
-        toDo = MainActivity.getInstance().toDoList.get((int) id);
-        title.setText(toDo.getTitle());
-        date.setText(toDo.getDate().getDate() + "." + toDo.getDate().getMonth() + "." + toDo.getDate().getYear());
-        img.setImageBitmap(toDo.getImg());
+        String from = intent.getStringExtra("from");
+        if(from.equals("main")){
+            toDo = MainActivity.getInstance().toDoList.get((int) id);
+            title.setText(toDo.getTitle());
+            date.setText(toDo.getDate().getDate() + "." + toDo.getDate().getMonth() + "." + toDo.getDate().getYear());
+            img.setImageBitmap(toDo.getImg());
+        }
+        else if (from.equals("done")){
+            toDo = DoneActivity.getInstance().toDos.get((int) id);
+            title.setText(toDo.getTitle());
+            date.setText(toDo.getDate().getDate() + "." + toDo.getDate().getMonth() + "." + toDo.getDate().getYear());
+            img.setImageBitmap(toDo.getImg());
+        }
+        System.out.println("test");
     }
 
     public void checkToDo(View view){
