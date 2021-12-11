@@ -69,7 +69,7 @@ public class CreateActivity extends AppCompatActivity {
     public void createToDo(View view){
         String t = titleInput.getText().toString();
         ToDo toDo = new ToDo(t, date, img);
-        MainActivity.getInstance().toDoList.add(toDo);
+        MainActivity.getInstance().allToDos.add(toDo);
         this.finish();
     }
 }

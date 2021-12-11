@@ -21,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static MainActivity instance;
+    ArrayList<ToDo> allToDos = new ArrayList<>();
     ArrayList<ToDo> toDoList = new ArrayList<ToDo>();
     ArrayList<String> toDoListS = new ArrayList<String>();
     ListView list;
@@ -56,12 +57,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toDoneActivity(View view){
+        Intent intent = new Intent(this, DoneActivity.class);
+        startActivity(intent);
+    }
+
     public void loadToDos(){
         ArrayList<ToDo> save = new ArrayList<>();
         save.addAll(toDoList);
         toDoList.clear();
-        if (save.size() != 0) {
-            for (ToDo toDo:save){
+        if (allToDos.size() != 0) {
+            for (ToDo toDo:allToDos){
                 if (!toDo.getDone()){
                     toDoList.add(toDo);
                 }
