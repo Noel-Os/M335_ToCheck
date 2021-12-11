@@ -41,4 +41,9 @@ public class ShowActivity extends AppCompatActivity {
         date.setText(toDo.getDate().getDate() + "." + toDo.getDate().getMonth() + "." + toDo.getDate().getYear());
         img.setImageBitmap(toDo.getImg());
     }
+
+    public void checkToDo(View view){
+        this.toDo.setDone(true);
+        this.finish();
+    }
 }

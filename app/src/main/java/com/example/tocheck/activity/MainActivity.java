@@ -57,9 +57,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadToDos(){
-        toDoListS.clear();
-        for (ToDo toDo:toDoList) {
-            toDoListS.add(toDo.getTitle());
+        ArrayList<ToDo> save = new ArrayList<>();
+        save.addAll(toDoList);
+        toDoList.clear();
+        if (save.size() != 0) {
+            for (ToDo toDo:save){
+                if (!toDo.getDone()){
+                    toDoList.add(toDo);
+                }
+            }
+            toDoListS.clear();
+            for (ToDo toDo:toDoList) {
+                toDoListS.add(toDo.getTitle());
+            }
         }
     }
 
@@ -67,11 +77,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadToDos();
-        if(toDoList.size() > 0){
-            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                    (this, android.R.layout.simple_list_item_1, toDoListS);
-            list.setAdapter(arrayAdapter);
-        }
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, toDoListS);
+        list.setAdapter(arrayAdapter);
 
     }
 }
